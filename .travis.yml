@@ -27,8 +27,8 @@ before_install:
     else
       export PATH=$HOME/perl5/perlbrew/bin:$PATH
     fi
-  - perlbrew --quiet install-cpanm
-  - perlbrew use $TRAVIS_PERL_VERSION
+  - perlbrew --quiet install-cpanm --force
+  - eval "$(perlbrew env $TRAVIS_PERL_VERSION)"
 
 script:
   - true
