@@ -22,6 +22,6 @@ before_install:
      \curl -L https://install.perlbrew.pl | bash
      source $HOME/perl5/perlbrew/etc/bashrc
      perlbrew --quiet install-cpanm
-     perlbrew use $TRAVIS_PER_VERSION
+     perlbrew use $TRAVIS_PERL_VERSION
    fi 
 
