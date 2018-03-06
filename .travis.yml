@@ -29,6 +29,7 @@ before_install:
     fi
   - perlbrew --quiet install-cpanm --force
   - eval "$(perlbrew env $TRAVIS_PERL_VERSION)"
+  - export PATH=${PERLBREW_PATH:-$PERLBREW_ROOT/bin}:$PATH
 
 script:
   - true
