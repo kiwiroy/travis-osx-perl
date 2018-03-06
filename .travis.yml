@@ -17,13 +17,18 @@ os: osx
 osx_image: xcode7.3
 
 before_install:
- - |
-   if [[ ! -x $HOME/perl5/perlbrew/bin/perlbrew ]]; then
-     \curl -L https://install.perlbrew.pl | bash
-     source $HOME/perl5/perlbrew/etc/bashrc
-     perlbrew --quiet install-cpanm
-     perlbrew use $TRAVIS_PERL_VERSION
-   fi 
+  - |
+    if [[ ! -x $HOME/perl5/perlbrew/bin/perlbrew ]]; then
+      \curl -L https://install.perlbrew.pl | bash
+    fi
+  - |
+    if [[ -f $HOME/perl5/perlbrew/etc/bashrc ]]; then 
+      source $HOME/perl5/perlbrew/etc/bashrc
+    else
+      export PATH=$HOME/perl5/perlbrew/bin:$PATH
+    fi
+  - perlbrew --quiet install-cpanm
+  - perlbrew use $TRAVIS_PERL_VERSION
 
 script:
   - true
