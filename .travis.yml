@@ -14,13 +14,13 @@ perl:
 
 os: osx
 ## only 7.3 https://github.com/travis-ci/perl-builder/blob/a688863174e61974816e334eff885953ddb4a1c8/.travis.yml#L26-L29
-osx-image: xcode7.3
+osx_image: xcode7.3
 
 before_install:
  - |
-   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+   if [[ ! -d $HOME/perl5/perlbrew/bin/perlbrew ]]; then
      \curl -L https://install.perlbrew.pl | bash
-     source ~/perl5/perlbrew/etc/bashrc
+     source $HOME/perl5/perlbrew/etc/bashrc
      perlbrew --quiet install-cpanm
      perlbrew use $TRAVIS_PER_VERSION
    fi 
