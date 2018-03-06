@@ -1,0 +1,27 @@
+language: perl
+
+perl:
+  - "5.8"
+  - "5.10"
+  - "5.12"
+  - "5.14"
+  - "5.16"
+  - "5.18"
+  - "5.20"
+  - "5.22"
+  - "5.24"
+  - "5.26"
+
+os: osx
+## only 7.3 https://github.com/travis-ci/perl-builder/blob/a688863174e61974816e334eff885953ddb4a1c8/.travis.yml#L26-L29
+osx-image: xcode7.3
+
+before_install:
+ - |
+   if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+     \curl -L https://install.perlbrew.pl | bash
+     source ~/perl5/perlbrew/etc/bashrc
+     perlbrew --quiet install-cpanm
+     perlbrew use $TRAVIS_PER_VERSION
+   fi 
+
